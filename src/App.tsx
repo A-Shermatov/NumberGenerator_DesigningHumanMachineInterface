@@ -33,7 +33,7 @@ function App() {
     //выбор элементов
     //вывод итогов и ожидание продолжения
  return (
-  <Layout style={{height: '100vh'}}>
+  <Layout style={{minHeight: '100vh', background: 'white'}}>
       <Sider collapsible>
         <Menu theme="dark" mode="inline" onClick={handleMenuClick} defaultSelectedKeys={['1']} items={items} />
       </Sider>

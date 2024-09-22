@@ -12,7 +12,7 @@ function Pikto({ number }: PiktoProps) {
     <Flex vertical>
         {
             Array.from({length: number}).map((_, index) => (
-              <MehOutlined/>
+              <MehOutlined key={index}/>
             ))
         }
     </Flex>
