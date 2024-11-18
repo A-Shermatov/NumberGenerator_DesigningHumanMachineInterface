@@ -1,6 +1,6 @@
-import React from 'react';
-import { Flex } from 'antd';
-import { MehOutlined } from '@ant-design/icons';
+// import React from 'react';
+import { Flex } from "antd";
+import { StarOutlined } from "@ant-design/icons";
 
 interface PiktoProps {
   number: number;
@@ -15,7 +15,7 @@ function Pikto({ number }: PiktoProps) {
         return (
           <Flex>
             {Array.from({ length: number }).map((_, index) => (
-              <MehOutlined key={index} />
+              <StarOutlined key={index} />
             ))}
           </Flex>
         );
@@ -25,11 +25,11 @@ function Pikto({ number }: PiktoProps) {
         return (
           <Flex vertical>
             <Flex justify="center">
-              <MehOutlined />
+              <StarOutlined />
             </Flex>
             <Flex justify="space-between">
-              <MehOutlined />
-              <MehOutlined />
+              <StarOutlined />
+              <StarOutlined />
             </Flex>
           </Flex>
         );
@@ -39,12 +39,12 @@ function Pikto({ number }: PiktoProps) {
         return (
           <Flex vertical>
             <Flex>
-              <MehOutlined />
-              <MehOutlined />
+              <StarOutlined />
+              <StarOutlined />
             </Flex>
             <Flex>
-              <MehOutlined />
-              <MehOutlined />
+              <StarOutlined />
+              <StarOutlined />
             </Flex>
           </Flex>
         );
@@ -54,15 +54,15 @@ function Pikto({ number }: PiktoProps) {
         return (
           <Flex vertical>
             <Flex>
-              <MehOutlined />
-              <MehOutlined />
+              <StarOutlined />
+              <StarOutlined />
             </Flex>
             <Flex justify="center">
-              <MehOutlined />
+              <StarOutlined />
             </Flex>
             <Flex>
-              <MehOutlined />
-              <MehOutlined />
+              <StarOutlined />
+              <StarOutlined />
             </Flex>
           </Flex>
         );
@@ -73,12 +73,12 @@ function Pikto({ number }: PiktoProps) {
           <Flex vertical>
             <Flex>
               {Array.from({ length: 3 }).map((_, index) => (
-                <MehOutlined key={index} />
+                <StarOutlined key={index} />
               ))}
             </Flex>
             <Flex>
               {Array.from({ length: 3 }).map((_, index) => (
-                <MehOutlined key={index} />
+                <StarOutlined key={index} />
               ))}
             </Flex>
           </Flex>
@@ -89,17 +89,17 @@ function Pikto({ number }: PiktoProps) {
         return (
           <Flex vertical>
             <Flex justify="center">
-              <MehOutlined />
-              <MehOutlined />
+              <StarOutlined />
+              <StarOutlined />
             </Flex>
             <Flex justify="space-between">
-              <MehOutlined />
-              <MehOutlined />
-              <MehOutlined />
+              <StarOutlined />
+              <StarOutlined />
+              <StarOutlined />
             </Flex>
             <Flex justify="center">
-              <MehOutlined />
-              <MehOutlined />
+              <StarOutlined />
+              <StarOutlined />
             </Flex>
           </Flex>
         );
@@ -110,8 +110,8 @@ function Pikto({ number }: PiktoProps) {
           <Flex vertical>
             {Array.from({ length: 4 }).map((_, index) => (
               <Flex key={index}>
-                <MehOutlined />
-                <MehOutlined />
+                <StarOutlined />
+                <StarOutlined />
               </Flex>
             ))}
           </Flex>
@@ -123,9 +123,9 @@ function Pikto({ number }: PiktoProps) {
           <Flex vertical>
             {Array.from({ length: 3 }).map((_, index) => (
               <Flex key={index}>
-                <MehOutlined />
-                <MehOutlined />
-                <MehOutlined />
+                <StarOutlined />
+                <StarOutlined />
+                <StarOutlined />
               </Flex>
             ))}
           </Flex>

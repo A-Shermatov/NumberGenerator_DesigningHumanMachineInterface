@@ -1,5 +1,5 @@
 import { Button, Divider, Flex } from 'antd';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ResultsFirstTest from './ResultsFirstTest';
 import Results from './ResultsInterface';
 
@@ -13,9 +13,10 @@ function FirstTest() {
   const [numbers, setNumbers] = useState<number[]>([]);
   const [selected, setSelected] = useState<number[]>([]);
   const [gameState, setGameState] = useState<'waitStart' | 'showElems' | 'selectElems' | 'PrintResult'>('waitStart');
+  console.log(setZifri)
 
   const generateNumbers = (currentStage: number) => {
-    let local_numbers: number[] = [];
+    const local_numbers: number[] = [];
 
     while (local_numbers.length < 7) {
       const n: number = Math.floor(Math.random() * (9));
@@ -70,16 +71,16 @@ function FirstTest() {
 
   return (
     <>
-      <h1>Тестирование на 1 гипотезу</h1>
-      <p>Вам нужно выбрать как можно больше объектов, которые вы увидели</p>
+      <h1>Тестирование для первой гипотезы</h1>
+      <p><i>Вам нужно выбрать как можно больше объектов, которые вы увидели</i></p>
       <Divider />
 
       {/* Отображение чисел при gameState === "showElems" */}
       <Flex style={{ margin: '0 auto', display: gameState === 'showElems' ? 'flex' : 'none' }} justify='center'>
         {numbers.map(number => (
           <div key={number} style={{ maxWidth: '70px', border: '1px solid gray', borderRadius: '5px', margin: '0.5rem', padding: '1rem' }}>
-            {stage === 1 && <h1>{number}</h1>}
-            {stage === 2 && <h3>{number}</h3>}
+            {stage === 1 && <h1 style={{color: "red"}}>{number}</h1>}
+            {stage === 2 && <h1>{number}</h1>}
           </div>
         ))}
       </Flex>
@@ -115,7 +116,7 @@ function FirstTest() {
 
       {/* Кнопка "Начать" */}
       {gameState === 'waitStart' &&
-        <Button onClick={() => setStateShown(1)} type='primary' style={{ background: 'green' }}>
+        <Button onClick={() => setStateShown(1)} type='primary' style={{ background: 'blue' }}>
           Начать
         </Button>
       }

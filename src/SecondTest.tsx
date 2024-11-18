@@ -1,8 +1,8 @@
-import { Button, Divider, Flex } from 'antd';
-import React, { useState } from 'react';
-import Pikto from './Pikto';
-import ResultsSecondTest from './ResultsSecondTest';
-import Results from './ResultsInterface';
+import { Button, Divider, Flex } from "antd";
+import { useState } from "react";
+import Pikto from "./Pikto";
+import ResultsSecondTest from "./ResultsSecondTest";
+import Results from "./ResultsInterface";
 
 function SecondTest() {
   const [results, setResults] = useState<Results>({
@@ -13,10 +13,13 @@ function SecondTest() {
   const [stage, setStage] = useState<number>(1);
   const [numbers, setNumbers] = useState<number[]>([]);
   const [selected, setSelected] = useState<number[]>([]);
-  const [gameState, setGameState] = useState<'waitStart' | 'showElems' | 'selectElems' | 'PrintResult'>('waitStart');
+  const [gameState, setGameState] = useState<
+    "waitStart" | "showElems" | "selectElems" | "PrintResult"
+  >("waitStart");
 
+  console.log(setZifri);
   const generateNumbers = (currentStage: number) => {
-    let local_numbers: number[] = [];
+    const local_numbers: number[] = [];
 
     while (local_numbers.length < 7) {
       const n: number = Math.floor(Math.random() * 9 + 1);
@@ -25,7 +28,7 @@ function SecondTest() {
       }
     }
     setNumbers(local_numbers);
-    setResults(prevResults => {
+    setResults((prevResults) => {
       const newResults = { ...prevResults };
       newResults[currentStage] = [prevResults[currentStage][0], local_numbers]; // Обновляем правильный этап
       return newResults;
@@ -34,23 +37,23 @@ function SecondTest() {
 
   const changeSelected = (number: number) => {
     if (selected.includes(number)) {
-      setSelected(prev => prev.filter(n => n !== number));
+      setSelected((prev) => prev.filter((n) => n !== number));
     } else {
-      setSelected(prev => [...prev, number]);
+      setSelected((prev) => [...prev, number]);
     }
   };
 
   const setStateShown = (currentStage: number) => {
     generateNumbers(currentStage);
-    setGameState('showElems');
+    setGameState("showElems");
     setTimeout(() => {
-      setGameState('selectElems');
+      setGameState("selectElems");
     }, 1500);
   };
 
   const handleSelectClicked = () => {
     const local_stage = stage;
-    setResults(prevResults => {
+    setResults((prevResults) => {
       const newResults = { ...prevResults };
       newResults[local_stage] = [selected, prevResults[local_stage][1]];
       return newResults;
@@ -58,49 +61,79 @@ function SecondTest() {
     setSelected([]);
     const nextStage = local_stage + 1;
     setStage(nextStage);
-    
+
     if (nextStage === 2) {
       setStateShown(2);
     }
 
     if (nextStage === 3) {
-      setGameState('PrintResult');
+      setGameState("PrintResult");
       console.log(results);
     }
   };
 
   return (
     <>
-      <h1>Тестирование на 2 гипотезу</h1>
-      <p>Вам нужно выбрать как можно больше объектов, которые вы увидели</p>
+      <h1>Тестирование для второй гипотезы</h1>
+      <p>
+        <i>Вам нужно выбрать как можно больше объектов, которые вы увидели</i>
+      </p>
       <Divider />
 
-      <Flex style={{ margin: '0 auto', display: gameState === 'showElems' ? 'flex' : 'none' }} justify='center'>
+      <Flex
+        style={{
+          margin: "0 auto",
+          display: gameState === "showElems" ? "flex" : "none",
+        }}
+        justify="center"
+      >
         {numbers.map((number, index) => (
-          <div key={`${number}-${index}`} style={{ maxWidth: '70px', border: '1px solid gray', borderRadius: '5px', margin: '0.5rem', padding: '1rem' }}>
-            {stage === 1 && number}
+          <div
+            key={`${number}-${index}`}
+            style={{
+              maxWidth: "70px",
+              border: "1px solid gray",
+              borderRadius: "5px",
+              margin: "0.5rem",
+              padding: "1rem",
+            }}
+          >
+            {stage === 1 && <h1>{number}</h1>}
             {stage === 2 && <Pikto number={number} />}
           </div>
         ))}
       </Flex>
 
-      {gameState === 'selectElems' && (
-        <p style={{ alignSelf: 'start', justifySelf: 'center', textAlign: 'center', textDecoration: 'underline' }}>
+      {gameState === "selectElems" && (
+        <p
+          style={{
+            alignSelf: "start",
+            justifySelf: "center",
+            textAlign: "center",
+            textDecoration: "underline",
+          }}
+        >
           Выберите цифры, которые вы увидели
         </p>
       )}
-      <Flex style={{ margin: '0 auto', display: gameState === 'selectElems' ? 'flex' : 'none' }} justify='center'>
+      <Flex
+        style={{
+          margin: "0 auto",
+          display: gameState === "selectElems" ? "flex" : "none",
+        }}
+        justify="center"
+      >
         {zifri.map((number, index) => (
           <div
             key={`${number}-${index}`}
             style={{
-              background: selected.includes(number) ? 'gray' : 'white',
-              maxWidth: '70px',
-              border: '1px solid gray',
-              borderRadius: '5px',
-              margin: '0.5rem',
-              padding: '1rem',
-              cursor: 'pointer',
+              background: selected.includes(number) ? "gray" : "white",
+              maxWidth: "70px",
+              border: "1px solid gray",
+              borderRadius: "5px",
+              margin: "0.5rem",
+              padding: "1rem",
+              cursor: "pointer",
             }}
             onClick={() => changeSelected(number)}
           >
@@ -113,15 +146,23 @@ function SecondTest() {
       <ResultsSecondTest gameState={gameState} results={results} />
 
       {/* Кнопка "Начать" */}
-      {gameState === 'waitStart' && (
-        <Button onClick={() => setStateShown(1)} type='primary' style={{ background: 'green' }}>
+      {gameState === "waitStart" && (
+        <Button
+          onClick={() => setStateShown(1)}
+          type="primary"
+          style={{ background: "blue" }}
+        >
           Начать
         </Button>
       )}
 
       {/* Кнопка "Выбрать ответ" */}
-      {gameState === 'selectElems' && (
-        <Button onClick={handleSelectClicked} type='primary' style={{ background: 'red' }}>
+      {gameState === "selectElems" && (
+        <Button
+          onClick={handleSelectClicked}
+          type="primary"
+          style={{ background: "red" }}
+        >
           Выбрать ответ
         </Button>
       )}

@@ -1,3 +1,3 @@
-export default interface Results{
-    [key: number]: [number[], number[]]
-  }
+export default interface Results {
+  [key: number]: [number[], number[]];
+}
